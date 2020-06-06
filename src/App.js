@@ -5,24 +5,27 @@ import {
     Route,
 } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
+import { withAuthentication } from './components/Session';
 
 import Navigation from "./components/navigation"
 import HomePage from "./pages/home"
 import LoginPage from "./pages/login"
 import RegisterPage from "./pages/register"
+import AccountPage from "./pages/account"
 
-function App() {
+const App = () => {
     return (
-        <div className="App">
-            <Router>
-                <Navigation/>
-                <hr/>
-                <Route exact path={ROUTES.HOME} component={HomePage}/>
-                <Route path={ROUTES.LOGIN} component={LoginPage}/>
-                <Route path={ROUTES.REGISTER} component={RegisterPage}/>
-            </Router>
-        </div>
-    );
+            <div className="App">
+                <Router>
+                    <Navigation/>
+                    <hr/>
+                    <Route exact path={ROUTES.HOME} component={HomePage}/>
+                    <Route path={ROUTES.LOGIN} component={LoginPage}/>
+                    <Route path={ROUTES.REGISTER} component={RegisterPage}/>
+                    <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
+                </Router>
+            </div>
+        );
 }
 
-export default App;
+export default withAuthentication(App);
