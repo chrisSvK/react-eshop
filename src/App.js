@@ -12,17 +12,18 @@ import HomePage from "./pages/home"
 import LoginPage from "./pages/login"
 import RegisterPage from "./pages/register"
 import AccountPage from "./pages/account"
+import ProductsPage from "./pages/products"
 
 const App = () => {
     return (
             <div className="App">
                 <Router>
                     <Navigation/>
-                    <hr/>
                     <Route exact path={ROUTES.HOME} component={HomePage}/>
                     <Route path={ROUTES.LOGIN} component={LoginPage}/>
                     <Route path={ROUTES.REGISTER} component={RegisterPage}/>
                     <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
+                    <Route path={ROUTES.PRODUCTS} component={ProductsPage}/>
                 </Router>
             </div>
         );

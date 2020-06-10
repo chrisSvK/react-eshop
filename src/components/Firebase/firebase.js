@@ -1,5 +1,6 @@
 import app from "firebase/app"
 import 'firebase/auth';
+import 'firebase/database'
 
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -40,6 +41,17 @@ class Firebase {
     user = uid => this.db.ref(`users/${uid}`);
 
     users = () => this.db.ref('users');
+
+    userInfo = uid => {
+        return  this.user(uid).once('value').then(function (snapshot) {
+            var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+            return snapshot.val()
+        }).then(result => {
+            return result
+        })
+    }
+
+
 }
 
 export default Firebase;

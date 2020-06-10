@@ -7,15 +7,15 @@ import {AuthUserContext} from "./Session"
 const Navigation = () => {
     return (
         <AuthUserContext.Consumer>
-            {authUser =>
-                authUser ? <NavigationAuth authUser={authUser}/> : <NavigationNonAuth/>
+            {context =>
+             context.authUser ? <NavigationAuth authUser={context.authUser} userName={context.userInfo && context.userInfo.username}/> : <NavigationNonAuth/>
             }
         </AuthUserContext.Consumer>
     );
 };
 
-const NavigationAuth = ({authUser}) => (
-    <div>
+const NavigationAuth = ({authUser, userName}) => (
+    <nav>
         <ul>
             <li>
                 <Link to={ROUTES.HOME}>Home</Link>
@@ -23,16 +23,19 @@ const NavigationAuth = ({authUser}) => (
             <li>
                 <Link to={ROUTES.ACCOUNT}>Account</Link>
             </li>
+            <li>
+                <Link to={ROUTES.PRODUCTS}> Products</Link>
+            </li>
             <li>{authUser.email}</li>
             <li>
                 <SignOutButton/>
             </li>
         </ul>
-    </div>
+    </nav>
 );
 
 const NavigationNonAuth = () => (
-    <div>
+    <nav>
         <ul>
             <li>
                 <Link to={ROUTES.HOME}>Home</Link>
@@ -44,7 +47,7 @@ const NavigationNonAuth = () => (
                 <Link to={ROUTES.REGISTER}>Register</Link>
             </li>
         </ul>
-    </div>
+    </nav>
 );
 
 export default Navigation;
