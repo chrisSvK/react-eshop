@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Firebase, {FirebaseContext} from './components/Firebase';
-import  "./styles/style.css"
+import  "./styles/style.scss"
 require("dotenv").config()
 
 

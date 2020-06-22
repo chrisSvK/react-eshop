@@ -8,7 +8,9 @@ const Navigation = () => {
     return (
         <AuthUserContext.Consumer>
             {context =>
-             context.authUser ? <NavigationAuth authUser={context.authUser} userName={context.userInfo && context.userInfo.username}/> : <NavigationNonAuth/>
+                context.authUser ? <NavigationAuth authUser={context.authUser}
+                                                   userName={context.userInfo && context.userInfo.username}/> :
+                    <NavigationNonAuth/>
             }
         </AuthUserContext.Consumer>
     );
@@ -24,7 +26,13 @@ const NavigationAuth = ({authUser, userName}) => (
                 <Link to={ROUTES.ACCOUNT}>Account</Link>
             </li>
             <li>
-                <Link to={ROUTES.PRODUCTS}> Products</Link>
+                <Link to={ROUTES.PRODUCTS}>Produkty</Link>
+            </li>
+            <li>
+                <Link to={ROUTES.CIERNY}>Cierny</Link>
+                <Link to={ROUTES.ZELENY}>Zeleny</Link>
+                <Link to={ROUTES.OVOCNY}>Ovocny</Link>
+                <Link to={ROUTES.BYLINKOVY}>Bylinkovy</Link>
             </li>
             <li>{authUser.email}</li>
             <li>

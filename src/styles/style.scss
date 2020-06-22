@@ -1,0 +1,99 @@
+nav ul li{
+    list-style-type: none;
+}
+
+nav ul {
+    display: inline-flex;
+}
+
+nav li {
+    margin-right: 50px;
+}
+
+nav {
+    background-color: yellowgreen;
+}
+
+main {
+    width: 50%;
+    margin: 0 auto;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+#filterMode {
+    padding: 10px;
+    position: absolute;
+    z-index: 20;
+    width: max-content;
+    margin-top: 150px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    background-color: white;
+}
+
+#filterMode img {
+    display: inline-block;
+}
+
+#filterMode form {
+    display: inline;
+}
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+section#navigation {
+    margin-top: 115px;
+    text-align: left;
+}
+
+#formButton {
+    height: 30px;
+}
+
+#filter {
+    float: right;
+    width: 100px;
+    height: 30px;
+}
+
+@import "~bootstrap/scss/bootstrap";
