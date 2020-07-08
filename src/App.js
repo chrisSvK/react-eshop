@@ -7,7 +7,7 @@ import {
 import * as ROUTES from './constants/routes';
 import {withAuthentication} from './components/Session';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import Navigation from "./components/navigation"
 import HomePage from "./pages/home"

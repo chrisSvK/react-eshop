@@ -14,3 +14,4 @@ export const OVOCNY = '/ovocny'
 export const BYLINKOVY = '/bylinkovy'
 export const PRISLUSENSTVO = '/prislusenstvo'
 export const PRODUKT = '/product'
+

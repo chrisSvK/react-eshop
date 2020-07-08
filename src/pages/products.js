@@ -41,9 +41,9 @@ class Products extends Component {
     onSubmit = (event) => {
         event.preventDefault()
         let filter = event.target.elements.filterOption.value
-       let priceRange = event.target.elements.priceRange.value
+        let priceRange = event.target.elements.priceRange.value
 
-        let url = "/product/getAllProducts/" + filter + "/"+ priceRange
+        let url = "/product/getAllProducts/" + filter + "/" + priceRange
         if (this.props.category)
             url = '/product/category' + this.props.category + "/" + filter + "/" + priceRange
         api.get(url).then(
@@ -57,9 +57,27 @@ class Products extends Component {
         )
     }
 
+
     render() {
 
+        const Kategoria = () => {
+            let kategoria = this.state.products[0] ? this.state.products[0].kategoria.name : "Error"
+            if (kategoria.localeCompare("Error")) {
 
+                console.log(this.state.products[0].kategoria.parentKategoriaId)
+                switch (this.state.products[0].kategoria.parentKategoriaId) {
+                    case 4:
+                        kategoria = kategoria + " čaj"
+                        break;
+                    case 0:
+                        kategoria = kategoria + " káva"
+                        break;
+                    default:
+                        kategoria = "Príslušenstvo"
+                }
+            }
+            return kategoria
+        }
         return (
             <>
                 {this.state.isLoading
@@ -74,18 +92,23 @@ class Products extends Component {
                         <FilterOptions display={this.state.filterOption} closeFilter={this.filterShowHandler}
                                        onSubmit={this.onSubmit}/>
 
-                        <h1>{this.state.products[0] ? this.state.products[0].kategoria.name : "NIKHAJ"}</h1>
-                        <div className={"grid-container"}>
-                            {this.state.products.map((product) =>
-                                <Card style={{width: '100%'}}>
-                                    <Card.Img style={{height: "124px", width: "124px"}} variant="top"
-                                              src={require("../img/products/" + product.galeria[0].name)}/>
-                                    <Card.Body>
-                                        <Link to={ROUTES.PRODUKT+"/"+product.produktId}><Card.Title>{product.name}</Card.Title></Link>
-                                        <p>{product.atributy[0].cena}€</p>
-                                    </Card.Body>
-                                </Card>
-                            )}
+                        <h1>{<Kategoria/>}</h1>
+                        <div className={"top-items-container"}>
+
+                            <div className={"grid-container"}>
+                                {this.state.products.map((product) =>
+                                    <Link
+                                        to={ROUTES.PRODUKT + "/" + product.produktId}>
+                                        <Card style={{width: '100%'}}>
+                                            <Card.Img style={{height: "124px", width: "124px"}} variant="top"
+                                                      src={require("../img/products/" + product.galeria[0].name)}/>
+                                            <Card.Body>
+                                                <Card.Title>{product.name}</Card.Title>
+                                                <p>{product.atributy[0].cena}€</p>
+                                            </Card.Body>
+                                        </Card></Link>
+                                )}
+                            </div>
                         </div>
                     </>
                 }

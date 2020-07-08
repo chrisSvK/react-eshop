@@ -22,22 +22,35 @@ const NavigationAuth = ({authUser, userName}) => (
             <li>
                 <Link to={ROUTES.HOME}>Home</Link>
             </li>
-            <li>
-                <Link to={ROUTES.ACCOUNT}>Account</Link>
-            </li>
-            <li>
-                <Link to={ROUTES.PRODUCTS}>Produkty</Link>
-            </li>
-            <li>
-                <Link to={ROUTES.CIERNY}>Cierny</Link>
-                <Link to={ROUTES.ZELENY}>Zeleny</Link>
-                <Link to={ROUTES.OVOCNY}>Ovocny</Link>
-                <Link to={ROUTES.BYLINKOVY}>Bylinkovy</Link>
-            </li>
-            <li>{authUser.email}</li>
-            <li>
-                <SignOutButton/>
-            </li>
+            <div className="dropdown">
+                <button className="dropbtn">Čaj
+                    &#9660;
+                </button>
+                <div className="dropdown-content">
+                    <Link to={ROUTES.CIERNY}>Čierny</Link>
+                    <Link to={ROUTES.ZELENY}>Zeleny</Link>
+                    <Link to={ROUTES.OVOCNY}>Ovocny</Link>
+                    <Link to={ROUTES.BYLINKOVY}>Bylinkovy</Link>
+                </div>
+            </div>
+            <div className="dropdown">
+                <button className="dropbtn">Káva
+                    &#9660;
+                </button>
+                <div className="dropdown-content">
+                    <Link to={ROUTES.MLETA}>Mletá</Link>
+                    <Link to={ROUTES.ZRNKOVA}>Zrnková</Link>
+                    <Link to={ROUTES.KAPSULE}>Kapsule</Link>
+                </div>
+            </div>
+            <li><Link to={ROUTES.PRISLUSENSTVO}>Príslušenstvo</Link></li>
+
+            <div id={"nav-account"}>
+                <li><Link to={ROUTES.ACCOUNT}>{authUser.email}</Link></li>
+
+                    <SignOutButton/>
+
+            </div>
         </ul>
     </nav>
 );
