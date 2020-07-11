@@ -17,6 +17,7 @@ import AccountPage from "./pages/account"
 import ProductsPage from "./pages/products"
 import Container from "react-bootstrap/Container";
 import ProductPage from "./pages/product"
+import CartPage from "./pages/cart"
 
 const App = () => {
     return (
@@ -29,7 +30,9 @@ const App = () => {
                         <Route path={ROUTES.LOGIN} component={LoginPage}/>
                         <Route path={ROUTES.REGISTER} component={RegisterPage}/>
                         <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
+                        <Route path={ROUTES.CART} component={CartPage}/>
                         <Route path={ROUTES.PRODUCTS} component={ProductsPage}/>
+                        <Route path={ROUTES.CAJ} component={() => <ProductsPage category={4}/>}/>
                         <Route path={ROUTES.MLETA} component={() => <ProductsPage category={1}/>}/>
                         <Route path={ROUTES.ZRNKOVA} component={() => <ProductsPage category={2}/>}/>
                         <Route path={ROUTES.KAPSULE} component={() => <ProductsPage category={3}/>}/>

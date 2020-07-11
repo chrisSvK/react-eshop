@@ -20,9 +20,14 @@ class Products extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
         let url = "/product/getAllProducts"
         if (this.props.category)
-            url = '/product/category/' + this.props.category
+            if (this.props.category === 4)
+                url = '/product/caj'
+            else
+                url = '/product/category/' + this.props.category
+        console.log(url)
         api.get(url).then(
             response => {
                 this.setState({
@@ -45,7 +50,10 @@ class Products extends Component {
 
         let url = "/product/getAllProducts/" + filter + "/" + priceRange
         if (this.props.category)
-            url = '/product/category' + this.props.category + "/" + filter + "/" + priceRange
+            if(this.props.category === 4)
+                url = '/product/caj/' + this.props.category + "/" + filter + "/" + priceRange
+        else
+            url = '/product/category/' + this.props.category + "/" + filter + "/" + priceRange
         api.get(url).then(
             response => {
                 this.setState({
@@ -63,17 +71,21 @@ class Products extends Component {
         const Kategoria = () => {
             let kategoria = this.state.products[0] ? this.state.products[0].kategoria.name : "Error"
             if (kategoria.localeCompare("Error")) {
+                if (this.props.category) {
+                    if (this.props.category === 4) {
+                        kategoria = "ČAJ";
+                    } else
+                        switch (this.state.products[0].kategoria.parentKategoriaId) {
+                            case 4:
+                                kategoria = kategoria + " čaj"
+                                break;
+                            case 0:
+                                kategoria = kategoria + " káva"
+                                break;
+                            default:
+                                kategoria = "Príslušenstvo"
+                        }
 
-                console.log(this.state.products[0].kategoria.parentKategoriaId)
-                switch (this.state.products[0].kategoria.parentKategoriaId) {
-                    case 4:
-                        kategoria = kategoria + " čaj"
-                        break;
-                    case 0:
-                        kategoria = kategoria + " káva"
-                        break;
-                    default:
-                        kategoria = "Príslušenstvo"
                 }
             }
             return kategoria

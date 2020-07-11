@@ -22,20 +22,29 @@ const NavigationAuth = ({authUser, userName}) => (
             <li>
                 <Link to={ROUTES.HOME}>Home</Link>
             </li>
-            <div className="dropdown">
-                <button className="dropbtn">Čaj
-                    &#9660;
-                </button>
-                <div className="dropdown-content">
-                    <Link to={ROUTES.CIERNY}>Čierny</Link>
-                    <Link to={ROUTES.ZELENY}>Zeleny</Link>
-                    <Link to={ROUTES.OVOCNY}>Ovocny</Link>
-                    <Link to={ROUTES.BYLINKOVY}>Bylinkovy</Link>
+            <Link to={ROUTES.CAJ}>
+                <div className="dropdown">
+
+                    <button className="dropbtn"><p>Čaj</p>
+                        <span style={{color: "white"}} className="material-icons">
+arrow_drop_down
+</span>
+                    </button>
+
+                    <div className="dropdown-content">
+                        <Link to={ROUTES.CIERNY}>Čierny</Link>
+                        <Link to={ROUTES.ZELENY}>Zeleny</Link>
+                        <Link to={ROUTES.OVOCNY}>Ovocny</Link>
+                        <Link to={ROUTES.BYLINKOVY}>Bylinkovy</Link>
+                    </div>
                 </div>
-            </div>
+            </Link>
             <div className="dropdown">
-                <button className="dropbtn">Káva
-                    &#9660;
+                <button className="dropbtn">
+                    <p>Káva </p>
+                    <span style={{color: "white"}} className="material-icons">
+arrow_drop_down
+</span>
                 </button>
                 <div className="dropdown-content">
                     <Link to={ROUTES.MLETA}>Mletá</Link>
@@ -46,10 +55,18 @@ const NavigationAuth = ({authUser, userName}) => (
             <li><Link to={ROUTES.PRISLUSENSTVO}>Príslušenstvo</Link></li>
 
             <div id={"nav-account"}>
-                <li><Link to={ROUTES.ACCOUNT}>{authUser.email}</Link></li>
-
-                    <SignOutButton/>
-
+                <div className="dropdown">
+                    <button className="dropbtn">
+                        <Link to={ROUTES.ACCOUNT}>{authUser.email}</Link>
+                    </button>
+                    <div className="dropdown-content">
+                        <SignOutButton/>
+                    </div>
+                </div>
+                <Link to={ROUTES.CART}>
+                <span style={{color: "white", margin: 0, paddingTop: "15px"}} className="material-icons">
+shopping_cart
+                </span></Link>
             </div>
         </ul>
     </nav>

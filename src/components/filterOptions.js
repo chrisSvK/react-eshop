@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Slider from "./slider";
+import Button from "react-bootstrap/Button";
 
 class FilterOptions extends Component {
 
@@ -16,7 +17,7 @@ class FilterOptions extends Component {
         return (
             this.props.display
                 ? <div id="filterMode">
-                    <button onClick={this.props.closeFilter}>X</button>
+                    <Button onClick={this.props.closeFilter} >X</Button>
                     <b>Zoradiť podľa</b>
                     <form method="get" onSubmit={this.props.onSubmit}>
                         <select name="filterOption">
@@ -28,7 +29,7 @@ class FilterOptions extends Component {
                             <option value="filter6">Najstaršie</option>
                             <option value="filter7">Najobľúbenejšie</option>
                         </select>
-                        <button type="submit" id="filterOn">Filtruj</button>
+                        <Button type="submit" id="filterOn" >Filtruj</Button>
                         <br/>
                         <b>Max cena</b>
                         <Slider/>

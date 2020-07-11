@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {api} from "../api";
-import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import {addToCart } from '../components/actions/cartActions'
+import {connect} from "react-redux";
 
 function Product(props) {
 
     const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+    const [atribute_id, setAtribute] = useState("0");
+    const [amount, setAmount] = useState(1);
 
     useEffect(() => {
         let url = "/product/" + props.match.params.id
@@ -17,6 +21,30 @@ function Product(props) {
         )
     }, [])
 
+
+    const addToCart = (event) => {
+        event.preventDefault();
+        props.addToCart(product, atribute_id, amount)
+    }
+
+    const onAttChange = (event) => {
+        console.log("Atribut " + event.target.value);
+        setAtribute(event.target.value);
+    }
+
+    const onAmountChange = (event) => {
+        if (event.target.value > 0 || event.target.value === "") {
+            setAmount(event.target.value);
+        }
+
+    }
+
+    const checkAmount = () => {
+        if (amount < 1)
+            setAmount(1)
+    }
+
+
     return (
         <>
             {loading ? <h1>Loading</h1>
@@ -26,20 +54,23 @@ function Product(props) {
                         <h5>{product.name}</h5>
                         <img src={require("../img/products/" + product.galeria[0].name)} alt={"product"}/>
 
-                        {product.atributy.map((atribut) =>
-                            <>
-                                <input type="radio" id="male" name="gender" value="male"/>
-                                <label htmlFor="male">{atribut.value} / {atribut.cena}€</label>
-                            </>
-                        )}
-
-
-                        <div>
-                            <input maxlength="4" size="1"/>
-                            <label style={{float: "left", marginTop: "30px", marginLeft: "10px"}}>ks</label>
-                        </div>
-                        <button>Vložiť do košíka</button>
+                        <form onSubmit={addToCart}>
+                            {product.atributy.map((atribut, i) =>
+                                <div>
+                                    <input onChange={onAttChange} value={i} checked={atribute_id === "0"} type="radio"/>
+                                    <label htmlFor="atribute"><b>{atribut.value} / {atribut.cena}€</b></label>
+                                </div>
+                            )}
+                            <div>
+                                <input onBlur={checkAmount} onChange={onAmountChange} value={amount} maxlength="2"
+                                       size="1"/>
+                                <label style={{float: "left", marginTop: "30px", marginLeft: "10px"}}>ks</label>
+                            </div>
+                            <Button type={"submit"}>Vložiť do košíka</Button>
+                        </form>
                     </div>
+
+
                     <div id={"rightProductDetail"}>
                         <p>{product.popis}</p>
                         <p><b>Dostupnosť:</b> Na sklade</p>
@@ -53,4 +84,16 @@ function Product(props) {
     );
 }
 
-export default Product;
+const mapStateToProps = (state)=>{
+    return {
+        items: state.items
+    }
+}
+const mapDispatchToProps= (dispatch)=>{
+
+    return{
+        addToCart: (product, atribute_id, amount)=>{dispatch(addToCart(product, atribute_id, amount))}
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Product);
