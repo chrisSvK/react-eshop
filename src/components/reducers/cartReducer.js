@@ -7,29 +7,51 @@ const initState = {
 
 }
 const cartReducer = (state = initState, action) => {
-//INSIDE HOME COMPONENT
+
     if (action.type === ADD_TO_CART) {
 
-        // console.log(action)
-        // return state
         let addedItem = {product: action.product, atribute_id: action.atribute_id, amount: action.amount}
-        //check if the action id exists in the addedItems
-        let existed_item = state.addedItems.find(item => action.product.id === item.product.id && item.atribute_id === action.atribute_id)
-        if (existed_item) {
-            addedItem.quantity += 1
-            return {
-                ...state,
-                // total: state.total + addedItem.price
-            }
-        } else {
-            //addedItem.quantity = 1;
-            //calculating the total
-            let newTotal = state.total + addedItem.product.atributy[addedItem.atribute_id].cena
+
+        let existed_item_id = state.addedItems.findIndex(item => action.product.produktId === item.product.produktId && item.atribute_id === action.atribute_id)
+
+
+        if (existed_item_id !== -1) {
+
+            let newItem = state.addedItems[existed_item_id]
+            newItem.amount = parseInt(newItem.amount) + parseInt(action.amount)
+
+            let addedItems = state.addedItems;
+            addedItems.splice(existed_item_id, 1, newItem)
+
+            let totalPrice = 0;
+
+
+            addedItems.forEach(function (item) {
+                totalPrice = totalPrice + (item.amount * (item.product.atributy[item.atribute_id].cena))
+            })
 
             return {
                 ...state,
-                addedItems: [...state.addedItems, addedItem],
-                total: newTotal
+                addedItems,
+                totalPrice
+            }
+        } else {
+
+            let addedItems = state.addedItems
+            addedItems.push(addedItem)
+
+
+            let totalPrice = 0;
+
+
+            addedItems.forEach(function (item) {
+                totalPrice = totalPrice + (item.amount * (item.product.atributy[item.atribute_id].cena))
+            })
+
+            return {
+                ...state,
+                addedItems,
+                totalPrice
             }
 
         }

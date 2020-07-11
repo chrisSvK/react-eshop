@@ -6,34 +6,14 @@ import {withAuthorization} from "../Session";
 import {api} from "../../api";
 
 const CartPage = (props) => (
-    <CartPageBase items={props.items}/>
+    <CartPageBase items={props.items} totalPrice={props.totalPrice}/>
 
 );
 
 class CartPageBase extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {items: []};
-    }
-
-    componentDidMount() {
-        // this.props.items.map(item => {
-        //     let url = "/product/" + item.id
-        //     api.get(url).then(
-        //         response => {
-        //             this.setState(state => {
-        //                 const items = [...state.items, response.data];
-        //                 return {items}
-        //             })
-        //         }
-        //     )
-        // })
-
-    }
-
     render() {
         let itemList = this.props.items.map(item => {
-            
+
             return (
                 <tr>
                     <th>
@@ -43,8 +23,9 @@ class CartPageBase extends Component {
                     </th>
                     <th><span className="card-title">{item.product.name}</span></th>
                     <th>
-                        <b> {item.product.atributy[item.atribute_id].value} / {item.product.atributy[item.atribute_id].cena}</b>
+                        <b> {item.product.atributy[item.atribute_id].value} / {item.product.atributy[item.atribute_id].cena}€</b>
                     </th>
+                    <th>{item.amount}x</th>
                 </tr>
             )
         })
@@ -57,6 +38,7 @@ class CartPageBase extends Component {
                     <table>
                         <thead>
                         <tr>
+                            <th></th>
                             <th>Item</th>
                             <th></th>
                             <th>Pocet</th>
@@ -65,6 +47,7 @@ class CartPageBase extends Component {
                         <tbody>
                         {itemList}
                         </tbody>
+                        <tfoot>PLNA CENA {this.props.totalPrice}€</tfoot>
                     </table>
 
 
@@ -76,9 +59,11 @@ class CartPageBase extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.addedItems
+        items: state.addedItems,
+        totalPrice: state.totalPrice
     }
 }
+
 const condition = authUser => !!authUser;
 
 const CartPageForm = withRouter(withFirebase(CartPageBase))
