@@ -76,28 +76,56 @@ main {
   width: 50%;
 }
 
+#leftProductDetail h5 {
+  margin: 0 0 20px 0;
+  text-align: left;
+}
+
 #leftProductDetail img {
   margin-top: 0;
 }
 
 #leftProductDetail input {
   margin-top: 20px;
-  width: 15%;
+  width: 35px;
   float: left;
 }
 
 #leftProductDetail button {
   width: 25%;
-  margin-top: 20px;
+  margin-left: -100px;
 }
 
 #leftProductDetail h5 {
   color: black
 }
 
+#leftProductDetail form {
+  display: grid;
+}
+
 #rightProductDetail {
   padding-top: 50px;
   text-align: left;
+}
+
+#cart thead{
+  border-bottom: solid black;
+  border-width: 2px;
+}
+
+#cart tbody{
+  border-bottom: dotted black;
+  border-width: 2px;
+}
+
+#cart th{
+  width: 35%;
+}
+
+#cart input {
+  width: 40px;
+  margin-right: 20px;
 }
 
 label {

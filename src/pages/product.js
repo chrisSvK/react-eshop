@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {api} from "../api";
 import Button from "react-bootstrap/Button";
-import {addToCart } from '../components/actions/cartActions'
+import {addToCart} from '../components/actions/cartActions'
 import {connect} from "react-redux";
 
 function Product(props) {
@@ -54,6 +54,7 @@ function Product(props) {
                         <h5>{product.name}</h5>
                         <img src={require("../img/products/" + product.galeria[0].name)} alt={"product"}/>
 
+
                         <form onSubmit={addToCart}>
                             {product.atributy.map((atribut, i) =>
                                 <div>
@@ -65,8 +66,10 @@ function Product(props) {
                                 <input onBlur={checkAmount} onChange={onAmountChange} value={amount} maxlength="2"
                                        size="1"/>
                                 <label style={{float: "left", marginTop: "30px", marginLeft: "10px"}}>ks</label>
+                                <Button type={"submit"}>Vložiť do košíka</Button>
                             </div>
-                            <Button type={"submit"}>Vložiť do košíka</Button>
+
+
                         </form>
                     </div>
 
@@ -84,16 +87,18 @@ function Product(props) {
     );
 }
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state) => {
     return {
         items: state.items
     }
 }
-const mapDispatchToProps= (dispatch)=>{
+const mapDispatchToProps = (dispatch) => {
 
-    return{
-        addToCart: (product, atribute_id, amount)=>{dispatch(addToCart(product, atribute_id, amount))}
+    return {
+        addToCart: (product, atribute_id, amount) => {
+            dispatch(addToCart(product, atribute_id, amount))
+        }
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Product);
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

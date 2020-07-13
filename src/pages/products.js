@@ -97,14 +97,16 @@ class Products extends Component {
                         {this.state.error ? <h1>ERROR</h1> : null}
                     </div>
                     : <>
-                        <Button
-                            onClick={this.filterShowHandler}
-                        >FILTER</Button>
+
 
                         <FilterOptions display={this.state.filterOption} closeFilter={this.filterShowHandler}
                                        onSubmit={this.onSubmit}/>
 
                         <h1>{<Kategoria/>}</h1>
+
+                        <Button
+                            onClick={this.filterShowHandler}
+                        >FILTER</Button>
                         <div className={"top-items-container"}>
 
                             <div className={"grid-container"}>

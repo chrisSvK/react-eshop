@@ -3,17 +3,39 @@ import {withFirebase} from "../Firebase";
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {withAuthorization} from "../Session";
-import {api} from "../../api";
+import {deleteFromCart, changeQuantity} from "../actions/cartActions";
+import Button from "react-bootstrap/Button";
 
 const CartPage = (props) => (
-    <CartPageBase items={props.items} totalPrice={props.totalPrice}/>
+    <CartPageBase items={props.items} totalPrice={props.totalPrice} deleteFromCart={props.deleteFromCart}
+                  changeQuantity={props.changeQuantity}/>
 
 );
 
 class CartPageBase extends Component {
-    render() {
-        let itemList = this.props.items.map(item => {
 
+    render() {
+        const deleteItem = (product_id, atribute_id) => {
+            this.props.deleteFromCart(product_id, atribute_id)
+        }
+
+        const changeAmount = (produktId, atribute_id, event) => {
+            if (event.target.value > 0 ) {
+                console.log("PUSTIL SI MA")
+                this.props.changeQuantity(produktId, atribute_id, event.target.value)
+            }
+        }
+
+        const checkAmount = (event, amount) => {
+            console.log(event.target.value)
+            console.log(isNaN(event.target.value))
+
+            if(isNaN(event.target.value) || event.target.value <= 0)
+                event.target.value = amount
+        }
+
+
+        let itemList = this.props.items.map(item => {
             return (
                 <tr>
                     <th>
@@ -21,36 +43,59 @@ class CartPageBase extends Component {
                             <img src={require("../../img/products/" + item.product.galeria[0].name)} alt={"product"}/>
                         </div>
                     </th>
-                    <th><span className="card-title">{item.product.name}</span></th>
+                    <th>{item.product.name}</th>
                     <th>
                         <b> {item.product.atributy[item.atribute_id].value} / {item.product.atributy[item.atribute_id].cena}€</b>
                     </th>
-                    <th>{item.amount}x</th>
+                    <th>
+                        <div style={{display: "inline-flex"}}>
+                            <input onChange={(event) => changeAmount(item.product.produktId, item.atribute_id, event)}
+                                   type="text"
+                                   defaultValue={item.amount} maxLength="3" size="3"
+                                   onBlur={(event) => checkAmount(event, item.amount)}/>
+                            <Button onClick={() => deleteItem(item.product.produktId, item.atribute_id)}>X</Button>
+                        </div>
+                    </th>
                 </tr>
             )
         })
+
+        console.log(itemList.length)
         return (
             <>
-                <p>KOSIK</p>
+                <h3 style={{color: "black"}}>Nákupný košík</h3>
                 <div className="container">
-                    <h3 className="center" style={{color: "black"}}>Itemy v kosiku</h3>
-
-                    <table>
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>Item</th>
-                            <th></th>
-                            <th>Pocet</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {itemList}
-                        </tbody>
-                        <tfoot>PLNA CENA {this.props.totalPrice}€</tfoot>
-                    </table>
+                    <div id={"cart"}>
 
 
+                        <table>
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>Počet</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {itemList.length === 0 ?
+                                <h2 style={{color: "black"}}>Prázdny</h2>
+                                : itemList}
+
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>PLNÁ CENA <b>{this.props.totalPrice.toFixed(2)}€</b></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
+                        </table>
+
+
+                    </div>
                 </div>
             </>
         )
@@ -68,6 +113,19 @@ const condition = authUser => !!authUser;
 
 const CartPageForm = withRouter(withFirebase(CartPageBase))
 
-export default withAuthorization(condition)(connect(mapStateToProps)(CartPage));
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+        deleteFromCart: (product_id, atribute_id) => {
+            dispatch(deleteFromCart(product_id, atribute_id))
+        },
+
+        changeQuantity: (product_id, atribute_id, amount) => {
+            dispatch(changeQuantity(product_id, atribute_id, amount))
+        }
+    }
+}
+
+export default withAuthorization(condition)(connect(mapStateToProps, mapDispatchToProps)(CartPage));
 
 export {CartPageForm};
