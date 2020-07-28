@@ -78,12 +78,45 @@ const NavigationNonAuth = () => (
             <li>
                 <Link to={ROUTES.HOME}>Home</Link>
             </li>
-            <li>
-                <Link to={ROUTES.LOGIN}>Login</Link>
-            </li>
-            <li>
-                <Link to={ROUTES.REGISTER}>Register</Link>
-            </li>
+            <Link to={ROUTES.CAJ}>
+                <div className="dropdown">
+
+                    <button className="dropbtn"><p>Čaj</p>
+                        <span style={{color: "white"}} className="material-icons">
+arrow_drop_down
+</span>
+                    </button>
+
+                    <div className="dropdown-content">
+                        <Link to={ROUTES.CIERNY}>Čierny</Link>
+                        <Link to={ROUTES.ZELENY}>Zeleny</Link>
+                        <Link to={ROUTES.OVOCNY}>Ovocny</Link>
+                        <Link to={ROUTES.BYLINKOVY}>Bylinkovy</Link>
+                    </div>
+                </div>
+            </Link>
+            <div className="dropdown">
+                <button className="dropbtn">
+                    <p>Káva </p>
+                    <span style={{color: "white"}} className="material-icons">
+arrow_drop_down
+</span>
+                </button>
+                <div className="dropdown-content">
+                    <Link to={ROUTES.MLETA}>Mletá</Link>
+                    <Link to={ROUTES.ZRNKOVA}>Zrnková</Link>
+                    <Link to={ROUTES.KAPSULE}>Kapsule</Link>
+                </div>
+            </div>
+            <li><Link to={ROUTES.PRISLUSENSTVO}>Príslušenstvo</Link></li>
+            <div id={"nav-account"}>
+                <li>
+                    <Link to={ROUTES.LOGIN}>Login</Link>
+                </li>
+                <li>
+                    <Link to={ROUTES.REGISTER}>Register</Link>
+                </li>
+            </div>
         </ul>
     </nav>
 );

@@ -30,6 +30,11 @@ const Home = () => {
     return (
         <div>
             <img style={{width: "100%", position: "absolute", left: 0}} src={require("../img/homeLayout.jpg")}/>
+            <div className="scroll-downs">
+                <div className="mousey">
+                    <div className="scroller"><div id={"scrollerText"}>Scroll down</div></div>
+                </div>
+            </div>
             <h1 style={{position: "relative", fontSize: "200px", margin: 0, padding: "20px", textShadow: "1px 2px 10px black", color: "white"}}>Coffee Planet</h1>
             <div>
                 <div  style={{marginTop:"300px"}} className={"top-items-container"}>
