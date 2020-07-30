@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/react-eshop/static/css/main.3c87761f.chunk.css",
-    "main.js": "/react-eshop/static/js/main.c0f56a5b.chunk.js",
-    "main.js.map": "/react-eshop/static/js/main.c0f56a5b.chunk.js.map",
-    "runtime-main.js": "/react-eshop/static/js/runtime-main.b2ca20fa.js",
-    "runtime-main.js.map": "/react-eshop/static/js/runtime-main.b2ca20fa.js.map",
+    "main.css": "/react-eshop/static/css/main.35b2573e.chunk.css",
+    "main.js": "/react-eshop/static/js/main.2401d10a.chunk.js",
+    "main.js.map": "/react-eshop/static/js/main.2401d10a.chunk.js.map",
+    "runtime-main.js": "/react-eshop/static/js/runtime-main.249e4937.js",
+    "runtime-main.js.map": "/react-eshop/static/js/runtime-main.249e4937.js.map",
     "static/css/2.af3c1da9.chunk.css": "/react-eshop/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.7d339dfd.chunk.js": "/react-eshop/static/js/2.7d339dfd.chunk.js",
-    "static/js/2.7d339dfd.chunk.js.map": "/react-eshop/static/js/2.7d339dfd.chunk.js.map",
+    "static/js/2.f561fe45.chunk.js": "/react-eshop/static/js/2.f561fe45.chunk.js",
+    "static/js/2.f561fe45.chunk.js.map": "/react-eshop/static/js/2.f561fe45.chunk.js.map",
     "index.html": "/react-eshop/index.html",
-    "precache-manifest.19a181013f7e43827841452470346c85.js": "/react-eshop/precache-manifest.19a181013f7e43827841452470346c85.js",
+    "precache-manifest.5c5218ca3cd32e7bdc02b53fe2de2ef3.js": "/react-eshop/precache-manifest.5c5218ca3cd32e7bdc02b53fe2de2ef3.js",
     "service-worker.js": "/react-eshop/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/react-eshop/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.3c87761f.chunk.css.map": "/react-eshop/static/css/main.3c87761f.chunk.css.map",
-    "static/js/2.7d339dfd.chunk.js.LICENSE.txt": "/react-eshop/static/js/2.7d339dfd.chunk.js.LICENSE.txt",
+    "static/css/main.35b2573e.chunk.css.map": "/react-eshop/static/css/main.35b2573e.chunk.css.map",
+    "static/js/2.f561fe45.chunk.js.LICENSE.txt": "/react-eshop/static/js/2.f561fe45.chunk.js.LICENSE.txt",
     "static/media/abby-min.jpg": "/react-eshop/static/media/abby-min.da39fa1d.jpg",
     "static/media/abby.jpg": "/react-eshop/static/media/abby.27042c13.jpg",
     "static/media/bombil-min.jpg": "/react-eshop/static/media/bombil-min.5a658fdb.jpg",
@@ -45,10 +45,10 @@
     "static/media/zrnkova.jpeg": "/react-eshop/static/media/zrnkova.71f4dcf0.jpeg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b2ca20fa.js",
+    "static/js/runtime-main.249e4937.js",
     "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.7d339dfd.chunk.js",
-    "static/css/main.3c87761f.chunk.css",
-    "static/js/main.c0f56a5b.chunk.js"
+    "static/js/2.f561fe45.chunk.js",
+    "static/css/main.35b2573e.chunk.css",
+    "static/js/main.2401d10a.chunk.js"
   ]
 }
