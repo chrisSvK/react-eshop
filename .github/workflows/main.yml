@@ -36,6 +36,7 @@ jobs:
       run: |
         npm install
         npm install gh-pages --save-dev
+        npm run-script build
       env:
         CI: false
         REACT_APP_API_KEY : ${{ secrets.REACT_APP_API_KEY }}
