@@ -35,7 +35,7 @@ const Home = () => {
                     <div className="scroller"><div id={"scrollerText"}>Scroll down</div></div>
                 </div>
             </div>
-            <h1 style={{position: "relative", fontSize: "200px", margin: 0, padding: "20px", textShadow: "1px 2px 10px black", color: "white"}}>Coffee Planet</h1>
+            <h1 style={{position: "relative", fontSize: "200px", margin: 0, padding: "20px", textShadow: "1px 2px 10px black", color: "white"}}>Cooffee Planet</h1>
             <div>
                 <div  style={{marginTop:"300px"}} className={"top-items-container"}>
                     <h5> Obľúbené</h5>
