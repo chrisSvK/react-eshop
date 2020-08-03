@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-const BASE_URL = 'http://react-eshop-spring.herokuapp.com/api/'
+const BASE_URL = 'https://react-eshop-spring.herokuapp.com/api/'
 
 export const api = Axios.create({
     baseURL: BASE_URL,
