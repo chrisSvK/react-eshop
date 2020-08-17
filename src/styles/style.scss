@@ -261,6 +261,19 @@ a:hover {
 }
 
 
+.MuiLinearProgress-root {
+  width: 800px;
+  margin-left: 100px;
+}
+
+.MuiLinearProgress-colorPrimary{
+  background-color: #e6bd96 !important;
+}
+
+.MuiLinearProgress-barColorPrimary{
+   background-color: #804f34 !important;
+}
+
 /* Dropdown button */
 nav ul li, .dropdown .dropbtn {
   font-size: 16px;
