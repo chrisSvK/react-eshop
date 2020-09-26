@@ -22,7 +22,7 @@ const INITIAL_STATE = {
 
 class RegisterFormBase extends Component {
     constructor(props) {
-        super(props);
+        super();
         this.state = {...INITIAL_STATE};
     }
 
@@ -71,6 +71,7 @@ class RegisterFormBase extends Component {
             username === '';
 
         return (
+            <div className="register">
             <form onSubmit={this.onSubmit}>
                 <input
                     name="username"
@@ -108,6 +109,7 @@ class RegisterFormBase extends Component {
 
                 {error && <p>{error.message}</p>}
             </form>
+            </div>
         );
     }
 }

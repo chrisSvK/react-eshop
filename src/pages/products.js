@@ -3,13 +3,14 @@ import {api} from "../api"
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import FilterOptions from "../components/filterOptions";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import * as ROUTES from "../constants/routes";
 import {Link} from "react-router-dom";
 
 class Products extends Component {
 
     constructor(props) {
-        super(props);
+        super();
         this.state = {
             products: [],
             isLoading: true,
@@ -93,8 +94,10 @@ class Products extends Component {
         return (
             <>
                 {this.state.isLoading
-                    ? <div>
-                        {this.state.error ? <h1>ERROR</h1> : null}
+                    ? <div id="loadingProducts">
+                        <CircularProgress/>
+                        <p>Loading</p>
+                        {/* {this.state.error ? <h1>ERROR</h1> : null} */}
                     </div>
                     : <>
 

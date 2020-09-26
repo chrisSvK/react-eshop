@@ -6,19 +6,20 @@
 }
 
 body {
-  background-color: #DCDDDB;
+  background-color: #dcdddb;
 }
-
 
 h1 {
-  color: #3D3A38;
+  color: #3d3a38;
   margin: 20px;
 }
 
-h2, h3, h4, h5 {
-  color: #F3EFF5;
+h2,
+h3,
+h4,
+h5 {
+  color: #f3eff5;
   margin: 20px;
-
 }
 
 nav {
@@ -41,15 +42,35 @@ nav li {
 }
 
 nav {
-  background-color: #3D3A38;
+  background-color: #3d3a38;
 }
 
 main {
   width: 75%;
   margin: 0 auto;
-  background-color: #DCDDDB;
+  background-color: #dcdddb;
 }
 
+.register {
+  form {
+    display: inline-grid;
+    input {
+      margin: 10px;
+    }
+    button {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      height: 50px;
+    }
+  }
+}
+
+#loadingProducts {
+  margin-top: 30vh;
+  .MuiCircularProgress-colorPrimary{
+    color: #926349;
+  }
+}
 
 .top-items-container h5 {
   text-align: left;
@@ -97,7 +118,7 @@ main {
 }
 
 #leftProductDetail h5 {
-  color: black
+  color: black;
 }
 
 #leftProductDetail form {
@@ -109,17 +130,17 @@ main {
   text-align: left;
 }
 
-#cart thead{
+#cart thead {
   border-bottom: solid black;
   border-width: 2px;
 }
 
-#cart tbody{
+#cart tbody {
   border-bottom: dotted black;
   border-width: 2px;
 }
 
-#cart th{
+#cart th {
   width: 35%;
 }
 
@@ -138,7 +159,8 @@ table {
   border-collapse: collapse;
 }
 
-td, th {
+td,
+th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
@@ -189,7 +211,8 @@ tr:nth-child(even) {
 }
 
 .card {
-  width: 100%;
+  width: 300px;
+  height: 300px;
   padding: 10px;
   border: none;
   background-color: #926349;
@@ -197,11 +220,11 @@ tr:nth-child(even) {
 
 .card-img-top {
   width: 120px;
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 .card-body {
-  padding: 20px 50px
+  padding: 20px 50px;
 }
 
 .card-body p {
@@ -209,10 +232,9 @@ tr:nth-child(even) {
   color: white;
 }
 
-
 .card-title {
   font-size: 18px;
-  color: #F3EFF5;
+  color: #f3eff5;
   text-decoration: none;
 }
 
@@ -221,12 +243,11 @@ tr:nth-child(even) {
 }
 
 .cart-card {
-
   width: 100%;
   padding: 10px;
   border: none;
   background-color: #926349;
-    display: inline-flex;
+  display: inline-flex;
 }
 
 a:hover {
@@ -241,8 +262,8 @@ a:hover {
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
 .slider::-webkit-slider-thumb {
@@ -260,22 +281,22 @@ a:hover {
   float: left;
 }
 
-
 .MuiLinearProgress-root {
   width: 800px;
   margin-left: 100px;
 }
 
-.MuiLinearProgress-colorPrimary{
+.MuiLinearProgress-colorPrimary {
   background-color: #e6bd96 !important;
 }
 
-.MuiLinearProgress-barColorPrimary{
-   background-color: #804f34 !important;
+.MuiLinearProgress-barColorPrimary {
+  background-color: #804f34 !important;
 }
 
 /* Dropdown button */
-nav ul li, .dropdown .dropbtn {
+nav ul li,
+.dropdown .dropbtn {
   font-size: 16px;
   border: none;
   outline: none;
@@ -291,7 +312,8 @@ nav ul li, .dropdown .dropbtn {
   color: white;
 }
 
-nav ul li, .dropdown .dropbtn p {
+nav ul li,
+.dropdown .dropbtn p {
   margin: 0;
 }
 
@@ -305,7 +327,8 @@ nav ul li a:hover {
 }
 
 /* Add a red background color to navbar links on hover */
-nav ul li:hover, .dropdown:hover .dropbtn {
+nav ul li:hover,
+.dropdown:hover .dropbtn {
   background-color: #926349;
 }
 
@@ -345,12 +368,12 @@ nav ul li:hover, .dropdown:hover .dropbtn {
 }
 
 .btn-primary:hover {
-  background-color: #B03C1C;
+  background-color: #b03c1c;
   border: none;
 }
 
 .btn-primary:focus {
-  background-color: #B03C1C;
+  background-color: #b03c1c;
   border: none;
 }
 
@@ -386,7 +409,7 @@ section#navigation {
   bottom: 50px;
   left: 0;
   margin: auto;
-  width :34px;
+  width: 34px;
   height: 55px;
 }
 .mousey {
@@ -405,7 +428,7 @@ section#navigation {
   background-color: #fff;
   animation-name: scroll;
   animation-duration: 2.2s;
-  animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+  animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
   animation-iteration-count: infinite;
 }
 
@@ -416,7 +439,15 @@ section#navigation {
   color: black;
 }
 @keyframes scroll {
-  0% { opacity: 0; }
-  10% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(15px); opacity: 0;}
+  0% {
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
 }
